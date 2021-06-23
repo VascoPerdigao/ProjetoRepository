@@ -19,10 +19,19 @@ public class janelaMegaEventos extends JFrame{
 
         // Causes this Window to be sized to fit the preferred size and layout of its subcomponents.
         pack();
+        setVisible(true);
 
         sairButton.addActionListener(this::btnSairActionPerformed);
+        gerirAtletasButton.addActionListener(this::btngerirAtletasButton);
 
     }
+
+    private void btngerirAtletasButton(ActionEvent e) {
+        GerirAtleta atleta=new GerirAtleta();
+        dispose();
+    }
+
+
 
     private void btnSairActionPerformed(ActionEvent e) {
         System.exit(0);
