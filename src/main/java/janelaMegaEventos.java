@@ -27,7 +27,7 @@ public class janelaMegaEventos extends JFrame{
     }
 
     private void btngerirAtletasButton(ActionEvent e) {
-        GerirAtleta atleta=new GerirAtleta();
+        new GerirAtleta();
         dispose();
     }
 
