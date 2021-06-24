@@ -23,6 +23,7 @@ public class CEevento extends JFrame{
     private Evento eventoSelecionado;
     private String nome, pais, local;
     private Integer anoInicio, mesInicio, diaInicio, anoFim, mesFim, diaFim;
+    private int prova_a_associar;
 
     public CEevento(char tipoCEEvento, int eventoID) {
         if (tipoCEEvento=='E'){
@@ -30,7 +31,7 @@ public class CEevento extends JFrame{
             confirmarButton.setText("Editar");
             eventoSelecionado = DadosAplicacao.INSTANCIA.getEventos().get(eventoID);
             nomeTextField.setText(String.valueOf(eventoSelecionado.getNome()));
-            ID_evento = eventoSelecionado.getEvento_ID();
+            ID_evento = eventoID;
             diaTextField.setText(String.valueOf(eventoSelecionado.getDta_inicio().getAno()));
             mesTextField.setText(String.valueOf(eventoSelecionado.getDta_inicio().getMes()));
             anoTextField.setText(String.valueOf(eventoSelecionado.getDta_inicio().getDia()));
@@ -40,9 +41,8 @@ public class CEevento extends JFrame{
             localTextField.setText(eventoSelecionado.getLocal());
             paisTextField.setText(eventoSelecionado.getPaís());
             confirmarButton.addActionListener(this::editarEventoButtonPerformed);
-            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
-                listaProvas.addItem(DadosAplicacao.INSTANCIA.getProvas().get(i).getNomeEID());
-            }
+
+            new TabelaProvasAssociadas(listaProvasAssociadas,eventoID);
             associarProvaButton.addActionListener(this::associarProvaButtonPerformed);
         }else {
             titulo.setText("Criação de Evento");
@@ -51,6 +51,7 @@ public class CEevento extends JFrame{
             for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
                 listaProvas.addItem(DadosAplicacao.INSTANCIA.getProvas().get(i).getNomeEID());
             }
+            prova_a_associar = listaProvas.getSelectedIndex();
             associarProvaButton.addActionListener(this::associarProvaButtonPerformed);
         }
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -113,6 +114,7 @@ public class CEevento extends JFrame{
                             JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no país do evento.", "ERRO",
                                     JOptionPane.ERROR_MESSAGE);
                         }
+
                         Data dta_inicio = new Data(diaInicio, mesInicio, anoInicio);
                         Data dta_fim = new Data(diaFim, mesFim, anoFim);
                         int id_evento = ID_evento;
@@ -183,8 +185,16 @@ public class CEevento extends JFrame{
 
                             id_evento = DadosAplicacao.INSTANCIA.atribuirIDEvento();
 
+
                             // System.out.println(id_evento);
                             Evento evento = new Evento(nome, id_evento, dta_inicio, dta_fim, local, pais);
+
+                            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
+                                if (DadosAplicacao.INSTANCIA.getProva(i).getEvento_associado() == id_evento) {
+                                    evento.adicionarProva(DadosAplicacao.INSTANCIA.getProva(i));
+                                }
+
+                            }
                             DadosAplicacao.INSTANCIA.adicionar(evento);
                             new GestorEventos();
                             dispose();
@@ -197,7 +207,11 @@ public class CEevento extends JFrame{
     }
 
     public void associarProvaButtonPerformed(ActionEvent e) {
-        new TabelaProvasAssociadas(listaProvasAssociadas);
+
+
+        new TabelaProvasAssociadas(listaProvasAssociadas,ID_evento);
+
+
 
     }
 

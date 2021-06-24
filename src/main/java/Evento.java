@@ -5,6 +5,7 @@ public class Evento {
     private Integer evento_ID = 0;
     private Data dta_inicio, dta_fim;
     private String Local, País;
+    private LinkedList<Prova> provas;
 
 
     public Evento(String nome, Integer evento_ID, Data dta_inicio, Data dta_fim, String local, String país) {
@@ -23,6 +24,13 @@ public class Evento {
         this.dta_fim = dta_fim;
         Local = local;
         País = país;
+    }
+
+    public void adicionarProva(Prova prova){
+        if (prova == null || provas.contains(prova)){
+            return;
+        }
+        provas.add(prova);
     }
 
 

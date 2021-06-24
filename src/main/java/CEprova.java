@@ -51,7 +51,7 @@ public class CEprova extends JFrame{
                     JOptionPane.ERROR_MESSAGE);
         } else {
 
-            Prova prova = new Prova(nome, id);
+            Prova prova = new Prova(nome, id,0);
             for (int i = 0; i < DadosAplicacao.INSTANCIA.contarEtapas(); i++) {
                 if (DadosAplicacao.INSTANCIA.getEtapa(i).getProva_associado() == id) {
                     prova.adicionarEtapa(DadosAplicacao.INSTANCIA.getEtapa(i));
