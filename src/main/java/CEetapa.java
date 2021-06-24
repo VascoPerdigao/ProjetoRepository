@@ -39,6 +39,18 @@ public class CEetapa extends JFrame {
     public void criarButtonPerformed(ActionEvent e){
         char genero='M';
        Data data = new Data(Integer.parseInt(diaTextField.getText()),Integer.parseInt(mesTextField.getText()),Integer.parseInt(anoTextField.getText()));
+        if(( Integer.parseInt(diaTextField.getText()) < 0 | Integer.parseInt(diaTextField.getText())  > 32)) {
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: O dia da data de etapa tem de ser um número inteiro entre 1 e 31.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else if(Integer.parseInt(mesTextField.getText()) < 0 | Integer.parseInt(mesTextField.getText()) > 12){
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: O mês da data de etapa tem de ser um número inteiro entre 1 e 12.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else if(Integer.parseInt(anoTextField.getText()) < 0 | Integer.parseInt(anoTextField.getText()) > 2021){
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: O ano da data de etapa tem de ser um número inteiro entre 1 e 2021.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        }
        String comp = compTextField.getText();
         if(mRadioButton.isSelected()){
              genero = 'M';

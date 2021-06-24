@@ -44,21 +44,31 @@ public class CEprova extends JFrame{
 
     public void criarButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
-        System.out.println(nome);
+        if(semNumeros(nome) == false){
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no nome da prova.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
 
-        Prova prova= new Prova(nome,id);
-        DadosAplicacao.INSTANCIA.adicionar(prova);
-        new Gestorprova();
-        setVisible(false);
+            Prova prova = new Prova(nome, id);
+            DadosAplicacao.INSTANCIA.adicionar(prova);
+            new Gestorprova();
+            setVisible(false);
+        }
     }
     public void EditarProvaButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
-        System.out.println(nome);
-        int id = provaSelecionada.getProva_ID();
+        if(semNumeros(nome) == false){
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no nome da prova.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            int id = provaSelecionada.getProva_ID();
 
-        provaSelecionada.editarProva(nome,id);
-        new Gestorprova();
-        setVisible(false);
+            provaSelecionada.editarProva(nome, id);
+            new Gestorprova();
+            setVisible(false);
+        }
 
     }
 
@@ -87,5 +97,11 @@ public class CEprova extends JFrame{
         new Gestorprova();
         dispose();
 
+    }
+
+    public static boolean semNumeros(String s) {
+        for(char c : s.toCharArray())
+            if (!Character.isLetter(c)) return false;
+        return true;
     }
 }
