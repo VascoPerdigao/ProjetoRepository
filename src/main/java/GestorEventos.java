@@ -61,7 +61,8 @@ public class GestorEventos extends JFrame {
     }
 
     public void guardarEventoButtonPerformed(ActionEvent e) {
-        new GuardarEvento();
+        GuardarEvento guardarEvento = new GuardarEvento();
+
         dispose();
 
     }

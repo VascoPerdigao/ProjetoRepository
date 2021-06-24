@@ -8,8 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class GuardarEvento extends JFrame {
-    private JPanel painelNomeFicheiro;
-    private JButton menuPrincipalButton;
 
     JFileChooser saver = new JFileChooser("./");
     int returnVal = saver.showSaveDialog(this);
@@ -17,10 +15,8 @@ public class GuardarEvento extends JFrame {
     BufferedWriter writer = null;
 
 
-
     public GuardarEvento() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setContentPane(painelNomeFicheiro);
+
 
         try {
             if (!file.exists()) {
@@ -32,12 +28,12 @@ public class GuardarEvento extends JFrame {
             bw.write("Dados de todos os Eventos registados atualmente na aplicação:\n");
             bw.write("-----------------------------------------------------------------------------\n");
             for (int i = 0; i < DadosAplicacao.INSTANCIA.contarEventos(); i++) {
-                bw.write(DadosAplicacao.INSTANCIA.getEventos().get(i).getNomeEID()  + "\n");
-                bw.write("Nome Evento: " + DadosAplicacao.INSTANCIA.getEvento(i).getNome() + "\n");
-                bw.write("Data de Ínicio: " + DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getDia() +"/" +
-                        DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getMes() +"/" + DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getAno() +"\n");
-                bw.write("Data de Fim: " + DadosAplicacao.INSTANCIA.getEvento(i).getDta_fim().getDia() +"/" +
-                        DadosAplicacao.INSTANCIA.getEvento(i).getDta_fim().getMes() +"/" + DadosAplicacao.INSTANCIA.getEvento(i).getDta_fim().getAno() +"\n");
+                bw.write(DadosAplicacao.INSTANCIA.getEventos().get(i).getNomeEID() + "\n");
+                bw.write("Nome do Evento: " + DadosAplicacao.INSTANCIA.getEvento(i).getNome() + "\n");
+                bw.write("Data de Ínicio: " + DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getDia() + "/" +
+                        DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getMes() + "/" + DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getAno() + "\n");
+                bw.write("Data de Fim: " + DadosAplicacao.INSTANCIA.getEvento(i).getDta_fim().getDia() + "/" +
+                        DadosAplicacao.INSTANCIA.getEvento(i).getDta_fim().getMes() + "/" + DadosAplicacao.INSTANCIA.getEvento(i).getDta_fim().getAno() + "\n");
                 bw.write("Local: " + DadosAplicacao.INSTANCIA.getEvento(i).getLocal() + "\n");
                 bw.write("País: " + DadosAplicacao.INSTANCIA.getEvento(i).getPaís() + "\n");
                 bw.write("-----------------------------------------------------------------------------\n");
@@ -48,14 +44,10 @@ public class GuardarEvento extends JFrame {
             e.printStackTrace();
         }
 
+        int input = JOptionPane.showConfirmDialog(null,
+                "Ficheiro com os eventos registados na aplicação criado com sucesso.", "Informação", JOptionPane.DEFAULT_OPTION);
 
-        menuPrincipalButton.addActionListener(this::menuPrincipalButtonPerformed);
 
-        pack();
-        setVisible(true);
-    }
-
-    public void menuPrincipalButtonPerformed(ActionEvent e) {
         new janelaMegaEventos("Mega Eventos");
         dispose();
     }

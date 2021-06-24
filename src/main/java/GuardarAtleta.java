@@ -29,7 +29,7 @@ public class GuardarAtleta extends JFrame {
             bw.write("-----------------------------------------------------------------------------\n");
             for (int i = 0; i < DadosAplicacao.INSTANCIA.contarAtletas(); i++) {
                 bw.write(DadosAplicacao.INSTANCIA.getAtletas().get(i).getNomeEID()  + "\n");
-                bw.write("Nome Evento: " + DadosAplicacao.INSTANCIA.getAtleta(i).getNome() + "\n");
+                bw.write("Nome do Atleta: " + DadosAplicacao.INSTANCIA.getAtleta(i).getNome() + "\n");
                 if(DadosAplicacao.INSTANCIA.getAtleta(i).getGenero() == 'M'){
                     bw.write("Género: Masculino \n");
                 }
@@ -49,7 +49,7 @@ public class GuardarAtleta extends JFrame {
         }
 
         int input = JOptionPane.showConfirmDialog(null,
-                "Ficheiro com os atletas registados na aplicação criado.", "Informação", JOptionPane.DEFAULT_OPTION);
+                "Ficheiro com os atletas registados na aplicação criado com sucesso.", "Informação", JOptionPane.DEFAULT_OPTION);
 
 
         new janelaMegaEventos("Mega Eventos");
