@@ -1,6 +1,8 @@
+import java.util.LinkedList;
+
 public class Atleta {
     private String nome;
-    private Integer atleta_ID;
+    private Integer atleta_ID = 0;
     private Character genero;
     private String País;
     private Data dta_nascimento;
@@ -14,6 +16,4 @@ public class Atleta {
         this.dta_nascimento = dta_nascimento;
         this.contacto = contacto;
     }
-
-
 }

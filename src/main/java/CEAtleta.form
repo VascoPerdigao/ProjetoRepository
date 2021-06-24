@@ -93,7 +93,7 @@
                       <text value="Nome:"/>
                     </properties>
                   </component>
-                  <component id="8be54" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                  <component id="8be54" class="javax.swing.JTextField" binding="nomeTextField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -161,7 +161,7 @@
                   <text value="País:"/>
                 </properties>
               </component>
-              <component id="6600d" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="6600d" class="javax.swing.JTextField" binding="paisTextField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -190,7 +190,7 @@
                   <text value="Data Nascimento:"/>
                 </properties>
               </component>
-              <component id="f9f9b" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+              <component id="f9f9b" class="javax.swing.JTextField" binding="diaTextField">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -200,7 +200,7 @@
                   <font size="16"/>
                 </properties>
               </component>
-              <component id="e13f9" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+              <component id="e13f9" class="javax.swing.JTextField" binding="mesTextField">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -210,7 +210,7 @@
                   <font size="16"/>
                 </properties>
               </component>
-              <component id="a2fde" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+              <component id="a2fde" class="javax.swing.JTextField" binding="anoTextField">
                 <constraints>
                   <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -263,7 +263,7 @@
                   <text value="Contacto:"/>
                 </properties>
               </component>
-              <component id="3f263" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+              <component id="3f263" class="javax.swing.JTextField" binding="contactoTextField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
