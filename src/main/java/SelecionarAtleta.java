@@ -8,6 +8,7 @@ public class SelecionarAtleta extends JFrame{
     private JComboBox ListaAtletas;
     private JButton voltarAtrasButton;
     private JButton menuPrincipalButton;
+    public JLabel titulo;
 
     public SelecionarAtleta(char tipo) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);

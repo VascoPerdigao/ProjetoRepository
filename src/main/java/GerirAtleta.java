@@ -45,13 +45,16 @@ public class GerirAtleta extends JFrame{
     }
 
     public void editarAtletaButtonPerformed(ActionEvent e) {
-       new SelecionarAtleta('E');
+       SelecionarAtleta selecionarAtleta=new SelecionarAtleta('E');
+       selecionarAtleta.titulo.setText("Editar Atleta");
         dispose();
 
     }
     public void eliminarAtletaButtonPerformed(ActionEvent e) {
-        new SelecionarAtleta('D'); //D- delete e E- Editar
+        SelecionarAtleta selecionarAtleta=new SelecionarAtleta('D'); //D- delete e E- Editar
+        selecionarAtleta.titulo.setText("Eliminar Atleta");
         dispose();
+    }
 
     public void listarAtletasButtonPerformed(ActionEvent e) {
         new Listar();
