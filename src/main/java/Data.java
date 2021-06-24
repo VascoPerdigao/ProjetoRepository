@@ -9,5 +9,15 @@ public class Data {
         this.dia = dia;
     }
 
+    public Integer getAno() {
+        return ano;
+    }
 
+    public Integer getMes() {
+        return mes;
+    }
+
+    public Integer getDia() {
+        return dia;
+    }
 }

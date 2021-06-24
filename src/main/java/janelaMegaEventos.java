@@ -12,10 +12,12 @@ public class janelaMegaEventos extends JFrame{
     private JButton estatisticaButton;
     private JButton sairButton;
 
+
     public janelaMegaEventos(String title) {
         super(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelMegaEventos);
+
 
         // Causes this Window to be sized to fit the preferred size and layout of its subcomponents.
         pack();

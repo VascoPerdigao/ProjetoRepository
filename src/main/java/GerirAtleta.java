@@ -13,12 +13,14 @@ public class GerirAtleta extends JFrame{
 
     public GerirAtleta(){
 
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(PainelGerirAtletas);
 
         voltarAtrásButton.addActionListener(this::voltarAtrásButtonPerformed);
         criarAtletaButton.addActionListener(this::criarAtletaButtonButtonPerformed);
         editarAtletaButton.addActionListener(this::editarAtletaButtonPerformed);
+        eliminarAtletaButton.addActionListener(this::eliminarAtletaButtonPerformed);
 
         pack();
         setVisible(true);
@@ -26,7 +28,7 @@ public class GerirAtleta extends JFrame{
     }
 
     public void voltarAtrásButtonPerformed(ActionEvent e) {
-        janelaMegaEventos janela=new janelaMegaEventos("Mega Eventos");
+        new janelaMegaEventos("Mega Eventos");
         dispose();
 
     }
@@ -34,19 +36,22 @@ public class GerirAtleta extends JFrame{
 
 
     public void criarAtletaButtonButtonPerformed(ActionEvent e) {
-        new CEAtleta();
+        new CEAtleta('C',0);
         dispose();
 
     }
 
     public void editarAtletaButtonPerformed(ActionEvent e) {
-       new SelecionarAtleta();
+       new SelecionarAtleta('E');
+        dispose();
+
+    }
+    public void eliminarAtletaButtonPerformed(ActionEvent e) {
+        new SelecionarAtleta('D'); //D- delete e E- Editar
         dispose();
 
     }
 
-    public static void main(String[] args) {
-        new GerirAtleta().setVisible(true);
-    }
+
 
 }
