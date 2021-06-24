@@ -23,17 +23,21 @@ public class CEprova extends JFrame{
 
             titulo.setText("Editar Prova");
             criarButton.setText("Editar");
+            criarEtapaButton.setText("Editar Etapa");
             nomeTextField.setText(provaSelecionada.getNome());
             criarButton.addActionListener(this::EditarProvaButtonPerformed);
             criarEtapaButton.addActionListener(this::editarEtapaButtonPerformed);
             voltarAtrasButton.addActionListener(this::voltarAtrasEditarButtonPerformed);
-
+            id = provaSelecionada.getProva_ID();
+            new TabelaProvaEtapaModel(table1,id);
         }else {
             id = DadosAplicacao.INSTANCIA.atribuitIDProva();
             titulo.setText("Criar Prova");
+
             criarButton.addActionListener(this::criarButtonPerformed);
             criarEtapaButton.addActionListener(this::criarEtapaButtonPerformed);
             voltarAtrasButton.addActionListener(this::voltarAtrasButtonPerformed);
+
         }
         atualizarTabelaButton.addActionListener(this::atualizarTabelaButtonPerform);
 
@@ -47,14 +51,24 @@ public class CEprova extends JFrame{
         System.out.println(nome);
 
         Prova prova= new Prova(nome,id);
+        for (int i=0;i<DadosAplicacao.INSTANCIA.contarEtapas();i++)
+        {
+            if(DadosAplicacao.INSTANCIA.getEtapa(i).getProva_associado()==id){
+                prova.adicionarEtapa(DadosAplicacao.INSTANCIA.getEtapa(i));
+            }
+
+        }
+
+
         DadosAplicacao.INSTANCIA.adicionar(prova);
         new Gestorprova();
         setVisible(false);
     }
+
     public void EditarProvaButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
         System.out.println(nome);
-        int id = provaSelecionada.getProva_ID();
+
 
         provaSelecionada.editarProva(nome,id);
         new Gestorprova();
@@ -64,22 +78,28 @@ public class CEprova extends JFrame{
 
     public void atualizarTabelaButtonPerform(ActionEvent e) {
 
-        new TabelaProvaEtapaModel(table1);
+        new TabelaProvaEtapaModel(table1,id);
 
     }
 
     public void criarEtapaButtonPerformed(ActionEvent e) {
-        new CEetapa('C',id);
-        new TabelaProvaEtapaModel(table1);
+
+        new CEetapa('C',id,-1);
+
 
     }
     public void editarEtapaButtonPerformed(ActionEvent e) {
 
+        Selecionar selecionar=new Selecionar('X');
+        selecionar.getIDProva(id);
+
+
     }
 
 
+
     public void voltarAtrasEditarButtonPerformed(ActionEvent e) {
-        new Selecionar('P');
+        new Selecionar('T');
         dispose();
 
     }

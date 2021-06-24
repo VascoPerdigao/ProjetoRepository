@@ -10,6 +10,7 @@ public class Prova {
     public Prova(String nome, Integer prova_ID) {
         this.nome = nome;
         this.prova_ID = prova_ID;
+        etapas = new LinkedList<>();
 
     }
 

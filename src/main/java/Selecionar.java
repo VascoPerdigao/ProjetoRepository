@@ -9,6 +9,8 @@ public class Selecionar extends JFrame{
     private JButton menuPrincipalButton;
     public JLabel titulo;
     public JLabel descricao;
+    private int id_Prova;
+
 
     public Selecionar(char tipo) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -70,6 +72,17 @@ public class Selecionar extends JFrame{
             editarButton.setText("Eliminar");
             editarButton.addActionListener(this::eliminarProvaButtonPerformed);
             voltarAtrasButton.addActionListener(this::voltarAtrasProvaButtonPerformed);
+        }
+        if(tipo=='X'){
+
+            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarEtapas(); i++) {
+                Lista.addItem(DadosAplicacao.INSTANCIA.getEtapas().get(i).getId());
+            }
+            titulo.setText("Editar Etapa");
+            descricao.setText("Escolha a Etapa que pretende editar");
+            editarButton.setText("Editar");
+            editarButton.addActionListener(this::editarEtapaButtonPerformed);
+            voltarAtrasButton.addActionListener(this::voltarAtrasEtapaButtonPerformed);
         }
 
 
@@ -160,6 +173,24 @@ public class Selecionar extends JFrame{
         dispose();
 
     }
+
+    //ETAPA
+    public void getIDProva(int id_prova){
+        id_Prova=id_prova;
+    }
+
+
+    public void editarEtapaButtonPerformed(ActionEvent e) {
+        new CEetapa('E',  id_Prova,Lista.getSelectedIndex());
+        dispose();
+
+    }
+    public void voltarAtrasEtapaButtonPerformed(ActionEvent e) {
+        setVisible(false);
+
+
+    }
+
 
 
 

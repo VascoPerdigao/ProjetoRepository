@@ -18,6 +18,17 @@ public class Etapa {
 
     }
 
+    public void editarEtapa(Data data, String dia_comp, Character genero, String ronda, double minimos, int prova_associado,int id) {
+        this.data = data;
+        this.dia_comp = dia_comp;
+        this.genero = genero;
+        this.ronda = ronda;
+        this.minimos = minimos;
+        this.prova_associado = prova_associado;
+        this.id =id;
+
+    }
+
     public Data getData() {
         return data;
     }

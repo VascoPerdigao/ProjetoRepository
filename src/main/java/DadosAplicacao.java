@@ -140,6 +140,11 @@ public enum DadosAplicacao {
         return new LinkedList<>(etapas);
     }
 
+    public Etapa getEtapa(int id){
+        return etapas.get(id);
+    }
+
+
     public int atribuitIDEtapa(){
         int id=id_etapa++;
         return id;
@@ -150,6 +155,14 @@ public enum DadosAplicacao {
             return;
         }
         etapas.add(etapa);
+    }
+
+    public int contarEtapas(){
+        int cont=0;
+        for(Etapa etapa : etapas){
+            cont++;
+        }
+        return cont;
     }
 
 
