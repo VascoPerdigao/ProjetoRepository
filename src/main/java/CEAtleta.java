@@ -60,6 +60,7 @@ public class CEAtleta extends JFrame{
 
     public void editarButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
+
         System.out.println(nome);
         if(mRadioButton.isSelected()){
             genero = 'M';
@@ -108,7 +109,7 @@ public class CEAtleta extends JFrame{
         id_atleta = DadosAplicacao.INSTANCIA.atribuirIDAtleta();
         System.out.println(id_atleta);
         Atleta atleta = new Atleta(nome,id_atleta,genero,pais,dta_nascimento,contacto);
-        new AtribuirNumero(id_atleta);
+
         DadosAplicacao.INSTANCIA.adicionar(atleta);
         new AtribuirNumero(id_atleta);
         setVisible(false);

@@ -8,11 +8,12 @@ public class CEprova extends JFrame{
     private JButton criarButton;
     private JButton criarEtapaButton;
     private JTextField nomeTextField;
-    private JList list1;
     private JLabel titulo;
+    private JTable table1;
+    private JButton atualizarTabelaButton;
     private String nome;
     private Prova provaSelecionada;
-
+    private int id;
 
     public CEprova(char tipoCEProva, int ID_prova) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -28,11 +29,14 @@ public class CEprova extends JFrame{
             voltarAtrasButton.addActionListener(this::voltarAtrasEditarButtonPerformed);
 
         }else {
+            id = DadosAplicacao.INSTANCIA.atribuitIDProva();
             titulo.setText("Criar Prova");
             criarButton.addActionListener(this::criarButtonPerformed);
             criarEtapaButton.addActionListener(this::criarEtapaButtonPerformed);
             voltarAtrasButton.addActionListener(this::voltarAtrasButtonPerformed);
         }
+        atualizarTabelaButton.addActionListener(this::atualizarTabelaButtonPerform);
+
 
         pack();
         setVisible(true);
@@ -41,7 +45,7 @@ public class CEprova extends JFrame{
     public void criarButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
         System.out.println(nome);
-        int id = DadosAplicacao.INSTANCIA.atribuitIDProva();
+
         Prova prova= new Prova(nome,id);
         DadosAplicacao.INSTANCIA.adicionar(prova);
         new Gestorprova();
@@ -58,7 +62,15 @@ public class CEprova extends JFrame{
 
     }
 
+    public void atualizarTabelaButtonPerform(ActionEvent e) {
+
+        new TabelaProvaEtapaModel(table1);
+
+    }
+
     public void criarEtapaButtonPerformed(ActionEvent e) {
+        new CEetapa('C',id);
+        new TabelaProvaEtapaModel(table1);
 
     }
     public void editarEtapaButtonPerformed(ActionEvent e) {

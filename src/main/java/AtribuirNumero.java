@@ -17,6 +17,7 @@ public class AtribuirNumero extends JFrame{
     }
 
     public void conlcuirButtonPerformed(ActionEvent e) {
+        setVisible(false);
         new GerirAtleta();
         dispose();
 
