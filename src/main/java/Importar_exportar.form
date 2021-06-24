@@ -23,7 +23,7 @@
             </constraints>
             <properties>
               <font size="30"/>
-              <text value="Importar_exportar Atletas"/>
+              <text value="Importar Atletas"/>
             </properties>
           </component>
         </children>
@@ -82,7 +82,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value="Selecione o Ficheiro que pretende importarExportar:"/>
+                  <text value="Selecione o Ficheiro que pretende importar:"/>
                 </properties>
               </component>
             </children>

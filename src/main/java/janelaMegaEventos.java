@@ -23,11 +23,14 @@ public class janelaMegaEventos extends JFrame{
         pack();
         setVisible(true);
 
+        consultarPistasButton.addActionListener(this::consultarPistasButtonPerformed);
         sairButton.addActionListener(this::btnSairActionPerformed);
         gerirEventosButton.addActionListener(this::btngerirEventosButton);
         gerirAtletasButton.addActionListener(this::btngerirAtletasButton);
         gerirProvasButton.addActionListener(this::btngerirProvasButton);
         inscriçãoDeAtletasButton.addActionListener(this::inscriçãoDeAtletasButtonActionPerformed);
+        estatisticaButton.addActionListener(this::estatisticaButtonActionPerformed);
+        registarResultadoDeUmaButton.addActionListener(this::registarResultadoDeUmaButtonActionPerformed);
 
     }
 
@@ -44,6 +47,25 @@ public class janelaMegaEventos extends JFrame{
         new Gestorprova();
         dispose();
     }
+
+    private void consultarPistasButtonPerformed(ActionEvent e) {
+        new ConsultarPistas();
+        dispose();
+    }
+
+
+    private void estatisticaButtonActionPerformed(ActionEvent e) {
+        new Estatistica();
+        dispose();
+    }
+
+    private void registarResultadoDeUmaButtonActionPerformed(ActionEvent e) {
+        new RegistarResultado();
+        dispose();
+    }
+
+
+
 
     private void inscriçãoDeAtletasButtonActionPerformed(ActionEvent e) {
         new GestorInscricao();

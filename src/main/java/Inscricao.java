@@ -50,16 +50,26 @@ public class Inscricao extends JFrame {
         nomeProva=provas.getSelectedItem().toString();
         marca2 = marca.getText();
         pais2 = pais.getText();
+        if (semNumeros(pais2) == false) {
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no país da inscrição.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
 
-        inscrito = new Inscrito(nomeAtleta,nomeEvento,nomeProva,marca2,pais2);
-        DadosAplicacao.INSTANCIA.adicionar(inscrito);
+            inscrito = new Inscrito(nomeAtleta, nomeEvento, nomeProva, marca2, pais2);
+            DadosAplicacao.INSTANCIA.adicionar(inscrito);
 
-        System.out.println(nomeAtleta + "," + nomeEvento +", " +nomeProva + "," + marca2 + "," + pais2);
+            System.out.println(nomeAtleta + "," + nomeEvento + ", " + nomeProva + "," + marca2 + "," + pais2);
 
-        new GestorInscricao();
-        setVisible(false);
+            new GestorInscricao();
+            setVisible(false);
+        }
     }
 
+    public static boolean semNumeros(String s) {
+        for(char c : s.toCharArray())
+            if (!Character.isLetter(c)) return false;
+        return true;
+    }
 
 
 }

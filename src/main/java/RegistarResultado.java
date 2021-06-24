@@ -1,6 +1,7 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
-public class RegistarResultado {
+public class RegistarResultado extends JFrame{
     private JPanel painelRegistarResul;
     private JButton voltarAtrasButton;
     private JButton confirmarButton;
@@ -23,4 +24,23 @@ public class RegistarResultado {
     private JPasswordField passwordField1;
     private JPasswordField passwordField2;
     private JTextField textField6;
+
+    public RegistarResultado(){
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setContentPane(painelRegistarResul);
+
+        voltarAtrasButton.addActionListener(this::voltarAtrásButtonPerformed);
+
+
+        pack();
+        setVisible(true);
+
+    }
+
+    public void voltarAtrásButtonPerformed(ActionEvent e) {
+        new janelaMegaEventos("Mega Eventos");
+        dispose();
+
+    }
 }

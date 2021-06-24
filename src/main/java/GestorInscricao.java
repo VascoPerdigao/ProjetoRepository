@@ -17,6 +17,8 @@ public class GestorInscricao extends JFrame{
         voltarAtrásButton.addActionListener(this::voltarAtrásButtonPerformed);
         inscreverAltetaButton.addActionListener(this::inscreverAltetaButtonPerformed);
         cancelarInscriçãoButton.addActionListener(this::cancelarInscriçãoButtonPerformed);
+        importarInscriçõesButton.addActionListener(this::importarInscriçõesButtonPerformed);
+        guardarInscriçõesButton.addActionListener(this::guardarInscriçõesButtonPerformed);
 
 
 
@@ -40,6 +42,18 @@ public class GestorInscricao extends JFrame{
 
     public void cancelarInscriçãoButtonPerformed(ActionEvent e) {
         new CancelInscricao();
+        dispose();
+
+    }
+
+    public void importarInscriçõesButtonPerformed(ActionEvent e) {
+        new Importar_exportar();
+        dispose();
+
+    }
+
+    public void guardarInscriçõesButtonPerformed(ActionEvent e) {
+        GuardarInscricao guardarInscricao = new GuardarInscricao();
         dispose();
 
     }
