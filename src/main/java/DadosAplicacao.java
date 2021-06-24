@@ -6,17 +6,21 @@ public enum DadosAplicacao {
     private LinkedList<Evento> eventos;
     private LinkedList<Atleta> atletas;
     private LinkedList<Prova> provas;
+    private LinkedList<Inscrito> inscritos;
     private int id_atleta;
     private int id_evento;
     private int id_prova;
+    private int id_inscrito;
 
     DadosAplicacao() {
         eventos = new LinkedList<>();
         atletas = new LinkedList<>();
         provas = new LinkedList<>();
+        inscritos = new LinkedList<>();
         id_evento=1;
         id_atleta=1;
         id_prova=1;
+        id_inscrito=1;
     }
 
     //Evento
@@ -131,6 +135,36 @@ public enum DadosAplicacao {
         return id;
     }
 
+    //inscritos
+
+    public Inscrito getInscrito(int id){
+        return inscritos.get(id);
+    }
+
+    public LinkedList<Inscrito> getInscritos() {
+        return new LinkedList<>(inscritos);
+    }
+
+    public void adicionar(Inscrito inscrito){
+        if (inscrito == null || provas.contains(inscrito)){
+            return;
+        }
+        inscritos.add(inscrito);
+    }
+    public void remover(Inscrito inscrito){
+        if (inscrito == null){
+            return;
+        }
+        inscritos.remove(inscrito);
+    }
+
+    public int contarInscritos(){
+        int cont=0;
+        for(Inscrito inscrito : inscritos){
+            cont++;
+        }
+        return cont;
+    }
 
 
 
