@@ -66,6 +66,8 @@ public class GerirAtleta extends JFrame{
 
     public void importarAtletasButtonPerformed(ActionEvent e) {
         Importar_exportar importarExportar = new Importar_exportar();
+        Importar_exportar importarInscricao = new Importar_exportar();
+        importarInscricao.tituloImportar.setText("Importar Atleta");
         dispose();
     }
 

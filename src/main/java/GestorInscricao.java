@@ -47,7 +47,8 @@ public class GestorInscricao extends JFrame{
     }
 
     public void importarInscriçõesButtonPerformed(ActionEvent e) {
-        new Importar_exportar();
+        Importar_exportar importarInscricao = new Importar_exportar();
+        importarInscricao.tituloImportar.setText("Importar Inscrição");
         dispose();
 
     }

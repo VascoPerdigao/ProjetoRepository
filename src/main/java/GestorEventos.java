@@ -62,7 +62,8 @@ public class GestorEventos extends JFrame {
 
     public void importarEventoButtonPerformed(ActionEvent e) {
 
-        new Importar_exportar();
+        Importar_exportar importarInscricao = new Importar_exportar();
+        importarInscricao.tituloImportar.setText("Importar Evento");
 
         dispose();
 
