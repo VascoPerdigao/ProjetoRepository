@@ -13,14 +13,17 @@ public class GerirAtleta extends JFrame{
 
     public GerirAtleta(){
 
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(PainelGerirAtletas);
 
         voltarAtrásButton.addActionListener(this::voltarAtrásButtonPerformed);
         criarAtletaButton.addActionListener(this::criarAtletaButtonButtonPerformed);
         editarAtletaButton.addActionListener(this::editarAtletaButtonPerformed);
+        listarAtletasButton.addActionListener(this::listarAtletasButtonPerformed);
         eliminarAtletaButton.addActionListener(this::eliminarAtletaButtonPerformed);
+        importarAtletasButton.addActionListener(this::importarAtletasButtonPerformed);
+        guardarAtletasButton.addActionListener(this::guardarAtletasButtonPerformed);
+
 
         pack();
         setVisible(true);
@@ -50,7 +53,32 @@ public class GerirAtleta extends JFrame{
         new SelecionarAtleta('D'); //D- delete e E- Editar
         dispose();
 
+    public void listarAtletasButtonPerformed(ActionEvent e) {
+        new Listar();
+        dispose();
+
     }
+
+
+
+    public void importarAtletasButtonPerformed(ActionEvent e) {
+        Importar_exportar importarExportar = new Importar_exportar();
+        importarExportar.tituloImportar.setText("Importar teste");
+        dispose();
+    }
+
+    public void guardarAtletasButtonPerformed(ActionEvent e) {
+        Importar_exportar exportar = new Importar_exportar();
+        exportar.tituloImportar.setText("Guardar Atletas");
+        exportar.Ficheiro_selecionar.setText("Clique em guardar para continuar");
+        exportar.importarFicheiroButton.setText("Exportar Ficheiro");
+
+        dispose();
+    }
+
+
+
+
 
 
 
