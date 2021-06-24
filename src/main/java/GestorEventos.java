@@ -60,6 +60,14 @@ public class GestorEventos extends JFrame {
 
     }
 
+    public void importarEventoButtonPerformed(ActionEvent e) {
+
+        new Importar_exportar();
+
+        dispose();
+
+    }
+
     public void guardarEventoButtonPerformed(ActionEvent e) {
         GuardarEvento guardarEvento = new GuardarEvento();
 
