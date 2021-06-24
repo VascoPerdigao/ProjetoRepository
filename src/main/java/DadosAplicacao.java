@@ -7,20 +7,24 @@ public enum DadosAplicacao {
     private LinkedList<Atleta> atletas;
     private LinkedList<Prova> provas;
     private LinkedList<Inscrito> inscritos;
+    private LinkedList<Etapa> etapas;
     private int id_atleta;
     private int id_evento;
     private int id_prova;
     private int id_inscrito;
+    private int id_etapa;
 
     DadosAplicacao() {
         eventos = new LinkedList<>();
         atletas = new LinkedList<>();
         provas = new LinkedList<>();
         inscritos = new LinkedList<>();
+        etapas = new LinkedList<>();
         id_evento=1;
         id_atleta=1;
         id_prova=1;
         id_inscrito=1;
+        id_etapa=1;
     }
 
     //Evento
@@ -165,6 +169,23 @@ public enum DadosAplicacao {
         }
         return cont;
     }
+    //ETAPAS
+    public LinkedList<Etapa> getEtapas() {
+        return new LinkedList<>(etapas);
+    }
+
+    public int atribuitIDEtapa(){
+        int id=id_etapa++;
+        return id;
+    }
+
+    public void adicionar(Etapa etapa){
+        if (etapa == null || etapas.contains(etapa)){
+            return;
+        }
+        etapas.add(etapa);
+    }
+
 
 
 
