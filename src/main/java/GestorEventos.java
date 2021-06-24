@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class GestorEventos {
-    private JPanel panel1;
+    private JPanel painelGestorEventos;
     private JButton criarEventoButton;
     private JButton editarEventoButton;
     private JButton eliminarEventoButton;
@@ -9,4 +9,9 @@ public class GestorEventos {
     private JButton importarEventoButton;
     private JButton guardarEventoButton;
     private JButton voltarAtrásButton;
+
+
+
+
+
 }
