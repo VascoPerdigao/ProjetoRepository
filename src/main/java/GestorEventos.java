@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 
 
 public class GestorEventos extends JFrame {
-    private JPanel PainelGestorEventos;
+    private JPanel painelGestorEventos;
     private JButton criarEventoButton;
     private JButton editarEventoButton;
     private JButton eliminarEventoButton;
@@ -15,7 +15,7 @@ public class GestorEventos extends JFrame {
     public GestorEventos(){
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setContentPane(PainelGestorEventos);
+        setContentPane(painelGestorEventos);
 
         voltarAtrásButton.addActionListener(this::voltarAtrásButtonPerformed);
         criarEventoButton.addActionListener(this::criarEventoButtonButtonPerformed);

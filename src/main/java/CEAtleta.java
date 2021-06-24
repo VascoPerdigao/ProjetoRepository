@@ -42,13 +42,15 @@ public class CEAtleta extends JFrame{
             anoTextField.setText(String.valueOf(atletaSelecionado.getDta_nascimento().getAno()));
             contactoTextField.setText(String.valueOf(atletaSelecionado.getContacto()));
             criarButton.addActionListener(this::editarButtonPerformed);
+            voltarAtrasButton.addActionListener(this::voltarAtrásEditarButtonPerformed);
         }else {
             titulo.setText("Criar Atleta");
             criarButton.addActionListener(this::criarButtonPerformed);
+            voltarAtrasButton.addActionListener(this::voltarAtrásButtonPerformed);
         }
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelCriarEditar);
-        voltarAtrasButton.addActionListener(this::voltarAtrásButtonPerformed);
+
 
 
 
@@ -78,8 +80,8 @@ public class CEAtleta extends JFrame{
         int id_atleta = ID_atleta;
         System.out.println(id_atleta);
         atletaSelecionado.editarAtleta(nome,id_atleta,genero,pais,dta_nascimento,contacto);
-
-
+        new GerirAtleta();
+        setVisible(false);
     }
 
 
@@ -103,17 +105,24 @@ public class CEAtleta extends JFrame{
         System.out.println("Contacto:" + contacto);
         Data dta_nascimento= new Data(dia,mes,ano);
         int id_atleta;
-
-            id_atleta = DadosAplicacao.INSTANCIA.atribuirIDAtleta();
-
+        id_atleta = DadosAplicacao.INSTANCIA.atribuirIDAtleta();
         System.out.println(id_atleta);
         Atleta atleta = new Atleta(nome,id_atleta,genero,pais,dta_nascimento,contacto);
+        new AtribuirNumero(id_atleta);
         DadosAplicacao.INSTANCIA.adicionar(atleta);
-
+        new AtribuirNumero(id_atleta);
+        setVisible(false);
     }
+
+
 
     public void voltarAtrásButtonPerformed(ActionEvent e) {
         new GerirAtleta();
+        dispose();
+
+    }
+    public void voltarAtrásEditarButtonPerformed(ActionEvent e) {
+        new Selecionar('E');
         dispose();
 
     }

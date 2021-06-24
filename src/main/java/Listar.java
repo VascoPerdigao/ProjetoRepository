@@ -10,7 +10,7 @@ public class Listar extends JFrame{
     public Listar(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelListar);
-
+        new TabelaAtletaModel(table1);
         voltarAtrásButton.addActionListener(this::voltarAtrásButtonPerformed);
 
         pack();

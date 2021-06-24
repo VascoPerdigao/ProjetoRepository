@@ -101,7 +101,7 @@ public class CEevento extends JFrame{
 
         System.out.println(id_evento);
         Evento evento = new Evento(nome,id_evento,dta_inicio, dta_fim, local, pais);
-        DadosAplicacao.INSTANCIA.adicionarEvento(evento);
+        DadosAplicacao.INSTANCIA.adicionar(evento);
 
         new GestorEventos();
         dispose();

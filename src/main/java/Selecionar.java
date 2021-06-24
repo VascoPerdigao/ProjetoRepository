@@ -52,6 +52,25 @@ public class Selecionar extends JFrame{
             editarButton.addActionListener(this::eliminarEventoButtonPerformed);
             voltarAtrasButton.addActionListener(this::voltarAtrasButtonPerformed);
         }
+        if(tipo=='T') {
+
+            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
+                Lista.addItem(DadosAplicacao.INSTANCIA.getProvas().get(i).getNomeEID());
+            }
+
+            editarButton.addActionListener(this::editarProvaButtonPerformed);
+            voltarAtrasButton.addActionListener(this::voltarAtrasProvaButtonPerformed);
+        }
+        if(tipo=='P'){
+
+            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
+                Lista.addItem(DadosAplicacao.INSTANCIA.getProvas().get(i).getNomeEID());
+            }
+            descricao.setText("Escolha o Evento que pretende eliminar");
+            editarButton.setText("Eliminar");
+            editarButton.addActionListener(this::eliminarProvaButtonPerformed);
+            voltarAtrasButton.addActionListener(this::voltarAtrasProvaButtonPerformed);
+        }
 
 
 
@@ -61,34 +80,47 @@ public class Selecionar extends JFrame{
 
 
     }
-    public void editarButtonPerformed(ActionEvent e) {
-        new CEAtleta('E',  Lista.getSelectedIndex());
-        dispose();
 
-    }
+
+    //EVENTO
 
     public void editarEventoButtonPerformed(ActionEvent e) {
         new CEevento('E',  Lista.getSelectedIndex());
         dispose();
 
     }
+
+    public void eliminarEventoButtonPerformed(ActionEvent e) {
+        Evento evento = DadosAplicacao.INSTANCIA.getEvento(Lista.getSelectedIndex());
+        DadosAplicacao.INSTANCIA.remover(evento);
+        new GestorEventos();
+        dispose();
+
+    }
+
+
+    public void voltarAtrasButtonPerformed(ActionEvent e) {
+        new GestorEventos();
+        dispose();
+
+    }
+
+
+
+
+    //ATLETA
+
+    public void editarButtonPerformed(ActionEvent e) {
+        new CEAtleta('E',  Lista.getSelectedIndex());
+        dispose();
+
+    }
+
+
     public void eliminarButtonPerformed(ActionEvent e) {
         Atleta atleta = DadosAplicacao.INSTANCIA.getAtleta(Lista.getSelectedIndex());
         DadosAplicacao.INSTANCIA.remover(atleta);
         new GerirAtleta();
-        dispose();
-
-    }
-    public void eliminarEventoButtonPerformed(ActionEvent e) {
-        Evento evento = DadosAplicacao.INSTANCIA.getEvento(Lista.getSelectedIndex());
-        DadosAplicacao.INSTANCIA.removerEvento(evento);
-        new GestorEventos();
-        dispose();
-
-    }
-
-    public void voltarAtrasButtonPerformed(ActionEvent e) {
-        new GestorEventos();
         dispose();
 
     }
@@ -98,6 +130,38 @@ public class Selecionar extends JFrame{
         dispose();
 
     }
+
+
+
+
+
+
+
+    //PROVA
+
+
+
+
+
+    public void editarProvaButtonPerformed(ActionEvent e) {
+        new CEprova('E',  Lista.getSelectedIndex());
+        dispose();
+
+    }
+    public void eliminarProvaButtonPerformed(ActionEvent e) {
+        Prova prova = DadosAplicacao.INSTANCIA.getProva(Lista.getSelectedIndex());
+        DadosAplicacao.INSTANCIA.remover(prova);
+        new Gestorprova();
+        dispose();
+
+    }
+    public void voltarAtrasProvaButtonPerformed(ActionEvent e) {
+        new Gestorprova();
+        dispose();
+
+    }
+
+
 
 
 

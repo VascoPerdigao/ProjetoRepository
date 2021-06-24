@@ -1,8 +1,9 @@
 import javax.swing.*;
 
-public class NomeFicheiro {
-    private JPanel panel1;
+public class NomeFicheiro extends JFrame {
+    private JPanel painelNomeFicheiro;
     private JButton voltarAtrásButton;
     private JButton guardarButton;
     private JTextField textField1;
+
 }

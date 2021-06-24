@@ -26,6 +26,7 @@ public class janelaMegaEventos extends JFrame{
         sairButton.addActionListener(this::btnSairActionPerformed);
         gerirEventosButton.addActionListener(this::btngerirEventosButton);
         gerirAtletasButton.addActionListener(this::btngerirAtletasButton);
+        gerirProvasButton.addActionListener(this::btngerirProvasButton);
 
     }
 
@@ -38,6 +39,11 @@ public class janelaMegaEventos extends JFrame{
         new GerirAtleta();
         dispose();
     }
+    private void btngerirProvasButton(ActionEvent e) {
+        new Gestorprova();
+        dispose();
+    }
+
 
 
 

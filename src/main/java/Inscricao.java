@@ -1,7 +1,7 @@
 import javax.swing.*;
 
-public class Inscricao {
-    private JPanel panel1;
+public class Inscricao extends JFrame {
+    private JPanel painelInscricao;
     private JComboBox comboBox1;
     private JButton button1;
     private JButton button2;
