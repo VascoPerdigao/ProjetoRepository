@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class NomeFicheiro extends JFrame {
+public class GuardarEvento extends JFrame {
     private JPanel painelNomeFicheiro;
     private JButton menuPrincipalButton;
 
@@ -18,7 +18,7 @@ public class NomeFicheiro extends JFrame {
 
 
 
-    public NomeFicheiro() {
+    public GuardarEvento() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelNomeFicheiro);
 
@@ -29,8 +29,9 @@ public class NomeFicheiro extends JFrame {
 
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("Dados de todos os Eventos registados atualmente na aplicação:\n");
+            bw.write("-----------------------------------------------------------------------------\n");
             for (int i = 0; i < DadosAplicacao.INSTANCIA.contarEventos(); i++) {
-                bw.write("Dados de todos os eventos registados atualmente na aplicação:\n");
                 bw.write(DadosAplicacao.INSTANCIA.getEventos().get(i).getNomeEID()  + "\n");
                 bw.write("Nome Evento: " + DadosAplicacao.INSTANCIA.getEvento(i).getNome() + "\n");
                 bw.write("Data de Ínicio: " + DadosAplicacao.INSTANCIA.getEvento(i).getDta_inicio().getDia() +"/" +

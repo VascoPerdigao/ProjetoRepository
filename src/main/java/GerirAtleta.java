@@ -71,10 +71,7 @@ public class GerirAtleta extends JFrame{
     }
 
     public void guardarAtletasButtonPerformed(ActionEvent e) {
-        Importar_exportar exportar = new Importar_exportar();
-        exportar.tituloImportar.setText("Guardar Atletas");
-        exportar.Ficheiro_selecionar.setText("Clique em guardar para continuar");
-        exportar.importarFicheiroButton.setText("Exportar Ficheiro");
+        GuardarAtleta guardarAtleta = new GuardarAtleta();
 
         dispose();
     }

@@ -37,9 +37,9 @@ public class CEAtleta extends JFrame{
             }
             ID_atleta = atletaSelecionado.getAtleta_ID();
             paisTextField.setText(atletaSelecionado.getPaís());
-            diaTextField.setText(String.valueOf(atletaSelecionado.getDta_nascimento().getDia()));
+            diaTextField.setText(String.valueOf(atletaSelecionado.getDta_nascimento().getAno()));
             mesTextField.setText(String.valueOf(atletaSelecionado.getDta_nascimento().getMes()));
-            anoTextField.setText(String.valueOf(atletaSelecionado.getDta_nascimento().getAno()));
+            anoTextField.setText(String.valueOf(atletaSelecionado.getDta_nascimento().getDia()));
             contactoTextField.setText(String.valueOf(atletaSelecionado.getContacto()));
             criarButton.addActionListener(this::editarButtonPerformed);
             voltarAtrasButton.addActionListener(this::voltarAtrásEditarButtonPerformed);
@@ -60,59 +60,118 @@ public class CEAtleta extends JFrame{
 
     public void editarButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
-
-        System.out.println(nome);
-        if(mRadioButton.isSelected()){
-            genero = 'M';
+        if(semNumeros(nome) == false){
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no nome de atleta.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        else if(fRadioButton.isSelected()){
-            genero = 'F';
+        else {
+            System.out.println(nome);
+            if (mRadioButton.isSelected()) {
+                genero = 'M';
+            } else if (fRadioButton.isSelected()) {
+                genero = 'F';
+            }
+            //System.out.println(genero);
+            pais = paisTextField.getText();
+            if(semNumeros(pais) == false){
+                JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no país do atleta.", "ERRO",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                // System.out.println(pais);
+                dia = Integer.parseInt(diaTextField.getText());
+                mes = Integer.parseInt(mesTextField.getText());
+                ano = Integer.parseInt(anoTextField.getText());
+                // System.out.println("Data: " + dia + "/" + mes + "/" + ano);
+                contacto = Long.parseLong(contactoTextField.getText());
+                if (contarDigitios(contacto) != 9) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Erro: Apenas são permitidos números de telemóvel com 9 dígitos.", "ERRO",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    if(( dia < 0 | dia > 32)) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Erro: O dia da data de nascimento tem de ser um número inteiro entre 1 e 31.", "ERRO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    else if(mes < 0 | mes > 12){
+                        JOptionPane.showMessageDialog(new JFrame(), "Erro: O mês da data de nascimento tem de ser um número inteiro entre 1 e 12.", "ERRO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    else if(ano < 0 | ano > 2021){
+                        JOptionPane.showMessageDialog(new JFrame(), "Erro: O ano da data de nascimento tem de ser um número inteiro entre 1 e 2021.", "ERRO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    else {
+                        //System.out.println("Contacto:" + contacto);
+                        Data dta_nascimento = new Data(dia, mes, ano);
+                        int id_atleta = ID_atleta;
+                        // System.out.println(id_atleta);
+                        atletaSelecionado.editarAtleta(nome, id_atleta, genero, pais, dta_nascimento, contacto);
+                        new GerirAtleta();
+                        setVisible(false);
+                    }
+                }
+            }
         }
-        System.out.println(genero);
-        pais = paisTextField.getText();
-        System.out.println(pais);
-        dia = Integer.parseInt(diaTextField.getText());
-        mes = Integer.parseInt(mesTextField.getText());
-        ano = Integer.parseInt(anoTextField.getText());
-        System.out.println("Data: "+ dia + "/"+ mes +"/"+ ano);
-        contacto = Long.parseLong(contactoTextField.getText());
-        System.out.println("Contacto:" + contacto);
-        Data dta_nascimento= new Data(dia,mes,ano);
-        int id_atleta = ID_atleta;
-        System.out.println(id_atleta);
-        atletaSelecionado.editarAtleta(nome,id_atleta,genero,pais,dta_nascimento,contacto);
-        new GerirAtleta();
-        setVisible(false);
     }
 
 
     public void criarButtonPerformed(ActionEvent e) {
         nome = nomeTextField.getText();
-        System.out.println(nome);
-        if(mRadioButton.isSelected()){
-            genero = 'M';
+        if(semNumeros(nome) == false){
+            JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no nome de atleta.", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        else if(fRadioButton.isSelected()){
-            genero = 'F';
-        }
-        System.out.println(genero);
-        pais = paisTextField.getText();
-        System.out.println(pais);
-        dia = Integer.parseInt(diaTextField.getText());
-        mes = Integer.parseInt(mesTextField.getText());
-        ano = Integer.parseInt(anoTextField.getText());
-        System.out.println("Data: "+ dia + "/"+ mes +"/"+ ano);
-        contacto = Long.parseLong(contactoTextField.getText());
-        System.out.println("Contacto:" + contacto);
-        Data dta_nascimento= new Data(dia,mes,ano);
-        int id_atleta;
-        id_atleta = DadosAplicacao.INSTANCIA.atribuirIDAtleta();
-        System.out.println(id_atleta);
-        Atleta atleta = new Atleta(nome,id_atleta,genero,pais,dta_nascimento,contacto);
+        else {
+            // System.out.println(nome);
+            if (mRadioButton.isSelected()) {
+                genero = 'M';
+            } else if (fRadioButton.isSelected()) {
+                genero = 'F';
+            }
+            // System.out.println(genero);
+            pais = paisTextField.getText();
+            if(semNumeros(pais) == false){
+                JOptionPane.showMessageDialog(new JFrame(), "Erro: Não são permitidos números no país do atleta.", "ERRO",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                //System.out.println(pais);
+                dia = Integer.parseInt(diaTextField.getText());
+                mes = Integer.parseInt(mesTextField.getText());
+                ano = Integer.parseInt(anoTextField.getText());
+                // System.out.println("Data: "+ dia + "/"+ mes +"/"+ ano);
+                contacto = Long.parseLong(contactoTextField.getText());
+                if (contarDigitios(contacto) != 9) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Erro: Apenas são permitidos números de telemóvel com 9 dígitos.", "ERRO",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // System.out.println("Contacto:" + contacto);
+                    if(( dia < 0 | dia > 32)) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Erro: O dia da data de nascimento tem de ser um número inteiro entre 1 e 31.", "ERRO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    else if(mes < 0 | mes > 12){
+                        JOptionPane.showMessageDialog(new JFrame(), "Erro: O mês da data de nascimento tem de ser um número inteiro entre 1 e 12.", "ERRO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    else if(ano < 0 | ano > 2021){
+                        JOptionPane.showMessageDialog(new JFrame(), "Erro: O ano da data de nascimento tem de ser um número inteiro entre 1 e 2021.", "ERRO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        Data dta_nascimento = new Data(dia, mes, ano);
+                        int id_atleta;
+                        id_atleta = DadosAplicacao.INSTANCIA.atribuirIDAtleta();
+                        //System.out.println(id_atleta);
+                        Atleta atleta = new Atleta(nome, id_atleta, genero, pais, dta_nascimento, contacto);
 
-        DadosAplicacao.INSTANCIA.adicionar(atleta);
-        new AtribuirNumero(id_atleta);
-        setVisible(false);
+                        DadosAplicacao.INSTANCIA.adicionar(atleta);
+                        new AtribuirNumero(id_atleta);
+                        setVisible(false);
+                    }
+                }
+            }
+        }
     }
 
 
@@ -128,6 +187,22 @@ public class CEAtleta extends JFrame{
 
     }
 
+    int contarDigitios(long n)
+    {
+        int count = 0;
+        while (n != 0)
+        {
+            n = n / 10;
+            ++count;
+        }
+        return count;
+    }
+
+    public static boolean semNumeros(String s) {
+        for(char c : s.toCharArray())
+            if (!Character.isLetter(c)) return false;
+        return true;
+    }
 
 
 }
