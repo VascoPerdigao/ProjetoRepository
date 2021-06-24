@@ -24,8 +24,14 @@ public class janelaMegaEventos extends JFrame{
         setVisible(true);
 
         sairButton.addActionListener(this::btnSairActionPerformed);
+        gerirEventosButton.addActionListener(this::btngerirEventosButton);
         gerirAtletasButton.addActionListener(this::btngerirAtletasButton);
 
+    }
+
+    private void btngerirEventosButton(ActionEvent e) {
+        new GestorEventos();
+        dispose();
     }
 
     private void btngerirAtletasButton(ActionEvent e) {

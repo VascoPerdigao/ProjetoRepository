@@ -13,6 +13,7 @@ public class CEAtleta extends JFrame{
     private JRadioButton fRadioButton;
     private JTextField mesTextField;
     private JTextField anoTextField;
+    private JLabel titulo;
     private String nome, pais;
     private char genero;
     private Integer ano, mes, dia;
@@ -25,6 +26,8 @@ public class CEAtleta extends JFrame{
 
     public CEAtleta(char tipoCEAtleta, int atletaID) {
         if (tipoCEAtleta=='E'){
+            titulo.setText("Editar Atleta");
+            criarButton.setText("Editar");
             atletaSelecionado = DadosAplicacao.INSTANCIA.getAtletas().get(atletaID);
             nomeTextField.setText(String.valueOf(atletaSelecionado.getNome()));
             if(atletaSelecionado.getGenero()=='F'){
@@ -40,7 +43,7 @@ public class CEAtleta extends JFrame{
             contactoTextField.setText(String.valueOf(atletaSelecionado.getContacto()));
             criarButton.addActionListener(this::editarButtonPerformed);
         }else {
-
+            titulo.setText("Criar Atleta");
             criarButton.addActionListener(this::criarButtonPerformed);
         }
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -101,7 +104,7 @@ public class CEAtleta extends JFrame{
         Data dta_nascimento= new Data(dia,mes,ano);
         int id_atleta;
 
-            id_atleta = DadosAplicacao.INSTANCIA.contarAtletas() + 1;
+            id_atleta = DadosAplicacao.INSTANCIA.atribuirIDAtleta();
 
         System.out.println(id_atleta);
         Atleta atleta = new Atleta(nome,id_atleta,genero,pais,dta_nascimento,contacto);
