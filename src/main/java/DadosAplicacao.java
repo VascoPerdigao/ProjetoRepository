@@ -4,9 +4,11 @@ public enum DadosAplicacao {
     INSTANCIA;
 
     private LinkedList<Atleta> atletas;
+    private int id_atleta;
 
     DadosAplicacao() {
         atletas = new LinkedList<>();
+        id_atleta=1;
     }
 
 
@@ -23,6 +25,7 @@ public enum DadosAplicacao {
         }
         atletas.remove(atleta);
     }
+
     public Atleta getAtleta(int id){
         return atletas.get(id);
     }
@@ -37,9 +40,8 @@ public enum DadosAplicacao {
         return cont;
     }
 
-    /*public int atribuirIDAtleta(){
-        int cont=0;
-        cont++;
-        return cont;
-    }*/
+    public int atribuirIDAtleta(){
+        int id=id_atleta++;
+        return id;
+    }
 }

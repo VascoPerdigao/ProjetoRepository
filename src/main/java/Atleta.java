@@ -32,6 +32,9 @@ public class Atleta {
     public String getNome() {
         return nome;
     }
+    public String getNomeEID() {
+        return String.valueOf(atleta_ID).concat(" | ").concat(nome);
+    }
 
     public Integer getAtleta_ID() {
         return atleta_ID;

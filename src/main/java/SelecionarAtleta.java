@@ -9,18 +9,22 @@ public class SelecionarAtleta extends JFrame{
     private JButton voltarAtrasButton;
     private JButton menuPrincipalButton;
     public JLabel titulo;
+    private JLabel descricao;
 
     public SelecionarAtleta(char tipo) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelEditar);
         for (int i = 0; i < DadosAplicacao.INSTANCIA.contarAtletas(); i++) {
-            ListaAtletas.addItem(DadosAplicacao.INSTANCIA.getAtletas().get(i).getAtleta_ID());
+            ListaAtletas.addItem(DadosAplicacao.INSTANCIA.getAtletas().get(i).getNomeEID());
         }
 
         if(tipo=='E') {
+
             editarButton.addActionListener(this::editarButtonPerformed);
         }
         if(tipo=='D'){
+            descricao.setText("Escolha o Atleta que pertende eliminar");
+            editarButton.setText("Eliminar");
             editarButton.addActionListener(this::eliminarButtonPerformed);
         }
 
