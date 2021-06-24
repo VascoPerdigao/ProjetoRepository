@@ -19,6 +19,11 @@ public class GerirAtleta extends JFrame{
         voltarAtrásButton.addActionListener(this::voltarAtrásButtonPerformed);
         criarAtletaButton.addActionListener(this::criarAtletaButtonButtonPerformed);
         editarAtletaButton.addActionListener(this::editarAtletaButtonPerformed);
+        listarAtletasButton.addActionListener(this::listarAtletasButtonPerformed);
+        eliminarAtletaButton.addActionListener(this::eliminarAtletaButtonPerformed);
+        importarAtletasButton.addActionListener(this::importarAtletasButtonPerformed);
+        guardarAtletasButton.addActionListener(this::guardarAtletasButtonPerformed);
+
 
         pack();
         setVisible(true);
@@ -28,9 +33,7 @@ public class GerirAtleta extends JFrame{
     public void voltarAtrásButtonPerformed(ActionEvent e) {
         janelaMegaEventos janela=new janelaMegaEventos("Mega Eventos");
         dispose();
-
     }
-
 
 
     public void criarAtletaButtonButtonPerformed(ActionEvent e) {
@@ -44,6 +47,37 @@ public class GerirAtleta extends JFrame{
         dispose();
 
     }
+
+    public void listarAtletasButtonPerformed(ActionEvent e) {
+        new Listar();
+        dispose();
+
+    }
+
+    public void eliminarAtletaButtonPerformed(ActionEvent e) {
+        new Eliminar();
+        dispose();
+
+    }
+
+    public void importarAtletasButtonPerformed(ActionEvent e) {
+        Importar_exportar importarExportar = new Importar_exportar();
+        importarExportar.tituloImportar.setText("Importar teste");
+        dispose();
+    }
+
+    public void guardarAtletasButtonPerformed(ActionEvent e) {
+        Importar_exportar exportar = new Importar_exportar();
+        exportar.tituloImportar.setText("Guardar Atletas");
+        exportar.Ficheiro_selecionar.setText("Clique em guardar para continuar");
+        exportar.importarFicheiroButton.setText("Exportar Ficheiro");
+
+        dispose();
+    }
+
+
+
+
 
     public static void main(String[] args) {
         new GerirAtleta().setVisible(true);
