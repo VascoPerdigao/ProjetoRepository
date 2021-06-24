@@ -23,7 +23,7 @@ public class GestorEventos extends JFrame {
         eliminarEventoButton.addActionListener(this::eliminarEventoButtonPerformed);
         listarEventosProvasButton.addActionListener(this::listarEventosProvasButtonPerformed);
        // importarEventoButton.addActionListener(this::importarEventoButtonPerformed);
-       // guardarEventoButton.addActionListener(this::guardarEventoButtonPerformed);
+       guardarEventoButton.addActionListener(this::guardarEventoButtonPerformed);
 
         pack();
         setVisible(true);
@@ -56,6 +56,12 @@ public class GestorEventos extends JFrame {
 
     public void listarEventosProvasButtonPerformed(ActionEvent e) {
         new ListarEventosProvas();
+        dispose();
+
+    }
+
+    public void guardarEventoButtonPerformed(ActionEvent e) {
+        new NomeFicheiro();
         dispose();
 
     }

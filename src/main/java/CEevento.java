@@ -8,8 +8,6 @@ public class CEevento extends JFrame{
     private JTextField dia2TextField;
     private JTextField localTextField;
     private JTextField paisTextField;
-    private JTextField textField6;
-    private JList list1;
     private JButton associarProvaButton;
     private JButton confirmarButton;
     private JButton voltarAtrasButton;
@@ -19,6 +17,8 @@ public class CEevento extends JFrame{
     private JTextField mes2TextField;
     private JTextField ano2TextField;
     private JLabel titulo;
+    private JComboBox listaProvas;
+    private JTable listaProvasAssociadas;
     private int ID_evento;
     private Evento eventoSelecionado;
     private String nome, pais, local;
@@ -40,9 +40,18 @@ public class CEevento extends JFrame{
             localTextField.setText(eventoSelecionado.getLocal());
             paisTextField.setText(eventoSelecionado.getPaís());
             confirmarButton.addActionListener(this::editarEventoButtonPerformed);
+            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
+                listaProvas.addItem(DadosAplicacao.INSTANCIA.getProvas().get(i).getNomeEID());
+            }
+            associarProvaButton.addActionListener(this::associarProvaButtonPerformed);
         }else {
             titulo.setText("Criação de Evento");
             confirmarButton.addActionListener(this::confirmarButtonPerformed);
+
+            for (int i = 0; i < DadosAplicacao.INSTANCIA.contarProvas(); i++) {
+                listaProvas.addItem(DadosAplicacao.INSTANCIA.getProvas().get(i).getNomeEID());
+            }
+            associarProvaButton.addActionListener(this::associarProvaButtonPerformed);
         }
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelCriarEditar);
@@ -105,6 +114,11 @@ public class CEevento extends JFrame{
 
         new GestorEventos();
         dispose();
+
+    }
+
+    public void associarProvaButtonPerformed(ActionEvent e) {
+        new TabelaProvasAssociadas(listaProvasAssociadas);
 
     }
 
